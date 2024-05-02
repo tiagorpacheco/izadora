@@ -1,0 +1,26 @@
+dag:
+  id: vacancia_dou_izadora
+  description: DAG de mineração de cargos vagos no DOU
+  search:
+    date: SEMANA
+    terms:
+      - EXONERA
+      - APOSENTA
+      - REDISTRIBUI
+      - DECLARAR VAGO
+      - OUTRO CARGO
+      - VACÂNCIA
+      - FALEC
+      - POSSE EM CARGO
+    department:
+      - Ministério da Educação
+      - Poder Judiciário
+    dou_sections:
+      - SECAO_2
+      - EDICAO_EXTRA
+      - EDICAO_SUPLEMENTAR
+  report:
+    emails:
+      - destination@economia.gov.br
+    attach_csv: True
+    subject: "Cargos Vagos - DOU"
