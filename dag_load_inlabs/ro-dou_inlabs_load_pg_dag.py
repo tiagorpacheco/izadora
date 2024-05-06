@@ -39,7 +39,7 @@ default_args = {
 @dag(
     dag_id="ro-dou_inlabs_load_pg",
     default_args=default_args,
-    schedule="59 3,23 * * *",
+    schedule="59 19 * * *",
     catchup=False,
     description=__doc__,
     max_active_runs=1,
