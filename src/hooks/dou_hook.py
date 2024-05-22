@@ -116,6 +116,9 @@ class DOUHook(BaseHook):
 
         all_results = []
 
+        # Conjunto para rastrear URLs já vistas
+        seen_urls = set()
+
         # Loop for each page of result
         for page_num in range(number_pages):
             logging.info("Searching in page %s", str(page_num + 1))
@@ -151,7 +154,9 @@ class DOUHook(BaseHook):
                     item["id"] = content["classPK"]
                     item["display_date_sortable"] = content["displayDateSortable"]
                     item["hierarchyList"] = content["hierarchyList"]
-
-                    all_results.append(item)
-
+                    # Filtra duplicidade baseada na URL
+                    if item["href"] not in seen_urls:
+                        seen_urls.add(item["href"])
+                        all_results.append(item)
+                        
         return all_results

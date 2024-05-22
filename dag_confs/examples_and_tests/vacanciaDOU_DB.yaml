@@ -1,0 +1,31 @@
+dag:
+  id: vacancia_dou_izadora_db
+  description: DAG de mineração de cargos vagos no DOU com SQL
+  search:
+    terms:
+      from_db_select:
+        sql: >
+          SELECT
+          texto_completo as texto,
+          data_publicacao as data,
+          REGEXP_REPLACE(url, r'http://', 'https://') as observacoes,
+          upper(REGEXP_EXTRACT(orgao, r'/([^/]+)')) AS orgao
+          FROM example_database_conn
+          where (orgao like '%Ministério da Educação%' or orgao like '%Poder Judiciário%')
+          and (
+            upper(texto_completo) like '%EXONERA%'
+            OR upper(texto_completo) like '%APOSENTA%'
+            OR upper(texto_completo) like '%REDISTRIBUI%'
+            OR upper(texto_completo) like '%DECLARAR VAGO%'
+            OR upper(texto_completo) like '%OUTRO CARGO%'
+            OR upper(texto_completo) like '%VACÂNCIA%'
+            OR upper(texto_completo) like '%FALEC%'
+            OR upper(texto_completo) like '%POSSE EM CARGO%'
+          )
+          and data_publicacao = DATETIME_SUB(current_date(), INTERVAL 1 day)
+        conn_id: example_database_conn
+  report:
+    emails:
+      - destination@economia.gov.br
+    attach_csv: True
+    subject: "[String] com caracteres especiais deve estar entre aspas"

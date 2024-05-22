@@ -5,13 +5,15 @@ dag:
     date: DIA
     terms:
       - EXONERA
+      - EXONERAÇÃO
       - APOSENTA
+      - APOSENTADORIA
       - REDISTRIBUI
       - DECLARAR VAGO
-      - OUTRO CARGO
       - VACÂNCIA
-      - FALEC
+      - FALECIMENTO
       - POSSE EM CARGO
+      - POSSE EM OUTRO CARGO
     department:
       - Ministério da Educação
       - Poder Judiciário
