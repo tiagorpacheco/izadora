@@ -107,7 +107,11 @@ class EmailSender(ISender):
         df.columns = ['Grupo', 'Termo de pesquisa', 'Seção', 'URL',
                         'Título', 'Resumo', 'Data']
         if 'single_group' in self.search_report:
-            del df['Grupo']
+            df.drop(columns=['Grupo'], inplace=True)
+        
+        # Remove linhas duplicadas com base na coluna 'URL'
+        df.drop_duplicates(subset=['URL'], inplace=True)
+
         return df
 
 

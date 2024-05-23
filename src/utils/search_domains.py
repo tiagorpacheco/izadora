@@ -66,7 +66,7 @@ def calculate_from_datetime(publish_to_date: datetime, search_date: SearchDate):
     """
 
     if search_date == SearchDate.DIA:
-        return publish_to_date - timedelta(days=1)
+        return publish_to_date
 
     elif search_date == SearchDate.SEMANA:
         return publish_to_date - timedelta(days=6)
