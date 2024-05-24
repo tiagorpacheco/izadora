@@ -404,7 +404,7 @@ class INLABSSearcher(BaseSearcher):
             dou_sections (List[str]): List of DOU sections to filter the search.
                 dou_sections examples: SECAO_1, SECAO_3D, EDICAO_EXTRA_1
             search_date (str): Date interval filter.
-                search_date examples: DIA, SEMANA, MES, ANO
+                search_date examples: DIA, ONTEM, SEMANA, MES, ANO
             department (List[str]): List of departments to filter the search.
             ignore_signature_match (bool): Flag to ignore publication
                 signature content.

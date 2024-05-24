@@ -45,6 +45,7 @@ class SearchDate(Enum):
     """Define the search date options to be used as parameter in the search"""
 
     DIA = "dia"
+    ONTEM = "ontem"
     SEMANA = "semana"
     MES = "mes"
     ANO = "ano"
@@ -67,6 +68,9 @@ def calculate_from_datetime(publish_to_date: datetime, search_date: SearchDate):
 
     if search_date == SearchDate.DIA:
         return publish_to_date
+
+    elif search_date == SearchDate.ONTEM:
+        return publish_to_date - timedelta(days=1)
 
     elif search_date == SearchDate.SEMANA:
         return publish_to_date - timedelta(days=6)

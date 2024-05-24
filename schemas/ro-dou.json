@@ -118,6 +118,7 @@
               "description": "description",
               "enum": [
                   "DIA",
+                  "ONTEM",
                   "SEMANA",
                   "MES",
                   "ANO"
